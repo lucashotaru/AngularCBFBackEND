@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/lucas/AngularCBFBackEND/AngularCBFBackEND.csproj": {}
+    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
   },
   "projects": {
-    "/home/lucas/AngularCBFBackEND/AngularCBFBackEND.csproj": {
+    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/lucas/AngularCBFBackEND/AngularCBFBackEND.csproj",
+        "projectUniqueName": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
         "projectName": "AngularCBFBackEND",
-        "projectPath": "/home/lucas/AngularCBFBackEND/AngularCBFBackEND.csproj",
-        "packagesPath": "/home/lucas/.nuget/packages/",
-        "outputPath": "/home/lucas/AngularCBFBackEND/obj/",
+        "projectPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
+        "outputPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/lucas/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,13 +50,17 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.0-preview.2.22153.1, )"
+              "version": "[6.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.0-preview.2.22153.1, )"
+              "version": "[6.0.3, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -75,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

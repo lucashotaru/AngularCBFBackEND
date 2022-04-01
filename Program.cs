@@ -1,4 +1,5 @@
 using AngularCBFBackEND;
+using AngularCBFBackEND.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,11 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //conexao banco
 
-builder.Services.AddDbContext<ApplicationContextDB>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CBF"));
-});
-
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
 // Add services to the container.
 
 builder.Services.AddControllers();
