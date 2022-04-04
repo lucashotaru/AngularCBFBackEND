@@ -1,4 +1,3 @@
-using AngularCBFBackEND.models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AngularCBFBackEND.Data
@@ -9,10 +8,6 @@ namespace AngularCBFBackEND.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
-        public DbSet<UsuarioModel> usuario { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder) => base.OnModelCreating(builder);
     }
 }
