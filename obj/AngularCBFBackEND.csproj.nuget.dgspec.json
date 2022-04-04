@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/lucas/Projetos/AngularCBFBackEND/AngularCBFBackEND.csproj": {}
+    "c:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
   },
   "projects": {
-    "/home/lucas/Projetos/AngularCBFBackEND/AngularCBFBackEND.csproj": {
+    "c:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/lucas/Projetos/AngularCBFBackEND/AngularCBFBackEND.csproj",
+        "projectUniqueName": "c:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
         "projectName": "AngularCBFBackEND",
-        "projectPath": "/home/lucas/Projetos/AngularCBFBackEND/AngularCBFBackEND.csproj",
-        "packagesPath": "/home/lucas/.nuget/packages/",
-        "outputPath": "/home/lucas/Projetos/AngularCBFBackEND/obj/",
+        "projectPath": "c:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
+        "outputPath": "c:\\ProjetoCBF\\AngularCBFBackEND\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/lucas/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,25 +44,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "IdentityModel": {
+            "Microsoft.AspNetCore.Authentication": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[2.2.0, )"
             },
-            "IdentityServer4": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[4.1.2, )"
-            },
-            "IdentityServer4.AccessTokenValidation": {
-              "target": "Package",
-              "version": "[3.0.1, )"
-            },
-            "Microsoft.AspNet.Identity.Core": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
-            "Microsoft.AspNet.Identity.EntityFramework": {
-              "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[6.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -72,21 +66,9 @@
               "target": "Package",
               "version": "[6.0.3, )"
             },
-            "Microsoft.IdentityModel.Logging": {
-              "target": "Package",
-              "version": "[6.16.0, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[6.0.2, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.16.0, )"
             }
           },
           "imports": [
@@ -107,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
