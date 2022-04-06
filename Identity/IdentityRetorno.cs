@@ -1,6 +1,6 @@
 namespace AngularCBFBackEND.Identity
 {
-    public class Response
+    public class IdentityRetorno
     {
         public string? Status { get; set; }
         public string? Message { get; set; }

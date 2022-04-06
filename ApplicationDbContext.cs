@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AngularCBFBackEND
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

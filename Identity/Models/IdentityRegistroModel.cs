@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AngularCBFBackEND.Identity.Models
 {
-    public class RegisterModel
+    public class IdentityRegistroModel
     {
         [Required(ErrorMessage = "User Name is required")]
         public string? Username { get; set; }
