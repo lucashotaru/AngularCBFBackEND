@@ -1,4 +1,7 @@
 using AngularCBFBackEND;
+using AngularCBFBackEND.Identity.Controller;
+using AngularCBFBackEND.Identity.Factory;
+using AngularCBFBackEND.Identity.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +9,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IdentityRepository>();
+builder.Services.AddTransient<IdentityController>();
+builder.Services.AddTransient<IdentityFactory>();
 
 // Add services to the container.
 

@@ -4,10 +4,10 @@ namespace AngularCBFBackEND.Identity.Models
 {
     public class IdentityLoginModel
     {
-        [Required(ErrorMessage = "User Name is required")]
+        [Required(ErrorMessage = "Usuario incorreto")]
         public string? Username { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Senha incorreta")]
         public string? Password { get; set; }
     }
 }
