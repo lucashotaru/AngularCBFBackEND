@@ -13,5 +13,8 @@ namespace AngularCBFBackEND.Identity.Models
 
         [Required(ErrorMessage = "Senha é obrigatória")]
         public string? Password { get; set; }
+        
+        [Required(ErrorMessage = "Cargo é obrigatório")]
+        public int Funcao { get; set; }
     }
 }

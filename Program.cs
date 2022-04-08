@@ -18,7 +18,7 @@ builder.Services.AddTransient<IdentityFactory>();
 
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Casa")));
 
 // For Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

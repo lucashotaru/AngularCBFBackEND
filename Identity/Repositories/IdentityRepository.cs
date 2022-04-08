@@ -11,11 +11,11 @@ namespace AngularCBFBackEND.Identity.Repositories
     {
         public static JwtSecurityToken GetToken(List<Claim> authClaims)
         {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(IdentityFactory._configuration["JWT:Secret"]));
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(IdentityController._configuration["JWT:Secret"]));
 
             var token = new JwtSecurityToken(
-                issuer: IdentityFactory._configuration["JWT:ValidIssuer"],
-                audience: IdentityFactory._configuration["JWT:ValidAudience"],
+                issuer: IdentityController._configuration["JWT:ValidIssuer"],
+                audience: IdentityController._configuration["JWT:ValidAudience"],
                 expires: DateTime.Now.AddHours(3),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
