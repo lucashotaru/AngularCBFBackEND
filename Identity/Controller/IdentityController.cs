@@ -14,16 +14,16 @@ namespace AngularCBFBackEND.Identity.Controller
     [ApiController]
     public class IdentityController: ControllerBase
     {
-        public static UserManager<IdentityUser> _userManager { get; private set;}
-        public static RoleManager<IdentityRole> _roleManager { get; private set;}
+        public static UserManager<IdentityUser> _gerenciarUsuario { get; private set;}
+        public static RoleManager<IdentityRole> _gerenciarPapeis { get; private set;}
         public static IConfiguration _configuration { get; private set;}
 
-        public IdentityController(UserManager<IdentityUser> userManager,
-                                  RoleManager<IdentityRole> roleManager,
+        public IdentityController(UserManager<IdentityUser> gerenciarUsuario,
+                                  RoleManager<IdentityRole> gerenciarPapeis,
                                   IConfiguration configuration)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
+            _gerenciarUsuario = gerenciarUsuario;
+            _gerenciarPapeis = gerenciarPapeis;
             _configuration = configuration;
         }
 

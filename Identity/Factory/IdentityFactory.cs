@@ -15,7 +15,7 @@ namespace AngularCBFBackEND.Identity.Factory
     {
         public static async Task<bool> VerificaSeUsuarioJaExiste([FromBody] IdentityRegistroModel model)
         {
-            var usuarioExistente = await IdentityController._userManager.FindByEmailAsync(model.Username);
+            var usuarioExistente = await IdentityController._gerenciarUsuario.FindByEmailAsync(model.Username);
             if (usuarioExistente != null)
                 return true;
 
@@ -30,21 +30,22 @@ namespace AngularCBFBackEND.Identity.Factory
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
             };
-            var resultado = await IdentityController._userManager.CreateAsync(usuario, model.Password);
+            
+            var resultado = await IdentityController._gerenciarUsuario.CreateAsync(usuario, model.Password);
 
             if(model.Funcao == 1){
-                if (!await IdentityController._roleManager.RoleExistsAsync(IdentityFuncaoModel.Admin))
-                await IdentityController._roleManager.CreateAsync(new IdentityRole(IdentityFuncaoModel.Admin));
-            if (!await IdentityController._roleManager.RoleExistsAsync(IdentityFuncaoModel.User))
-                await IdentityController._roleManager.CreateAsync(new IdentityRole(IdentityFuncaoModel.User));
+                if (!await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
+                await IdentityController._gerenciarPapeis.CreateAsync(new IdentityRole(IdentityPapeisModel.Admin));
+            if (!await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.User))
+                await IdentityController._gerenciarPapeis.CreateAsync(new IdentityRole(IdentityPapeisModel.User));
 
-            if (await IdentityController._roleManager.RoleExistsAsync(IdentityFuncaoModel.Admin))
+            if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
             {
-                await IdentityController._userManager.AddToRoleAsync(usuario, IdentityFuncaoModel.Admin);
+                await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.Admin);
             }
-            if (await IdentityController._roleManager.RoleExistsAsync(IdentityFuncaoModel.Admin))
+            if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
             {
-                await IdentityController._userManager.AddToRoleAsync(usuario, IdentityFuncaoModel.User);
+                await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.User);
             }
             }
 
@@ -53,11 +54,11 @@ namespace AngularCBFBackEND.Identity.Factory
 
         public static async Task<JwtSecurityToken> FazerLogin([FromBody] IdentityLoginModel model)
         {
-            var usuario = await IdentityController._userManager.FindByNameAsync(model.Username);
+            var usuario = await IdentityController._gerenciarUsuario.FindByNameAsync(model.Username);
 
-            if(usuario != null && await IdentityController._userManager.CheckPasswordAsync(usuario, model.Password))
+            if(usuario != null && await IdentityController._gerenciarUsuario.CheckPasswordAsync(usuario, model.Password))
             {
-                var papeisUsuarios = await IdentityController._userManager.GetRolesAsync(usuario);
+                var papeisUsuarios = await IdentityController._gerenciarUsuario.GetRolesAsync(usuario);
 
                 var autenticacaoClaim = new List<Claim>
                 {
