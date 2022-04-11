@@ -4,6 +4,7 @@ using AngularCBFBackEND.Identity.Factory;
 using AngularCBFBackEND.Identity.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,18 +15,23 @@ builder.Services.AddScoped<IdentityRepository>();
 builder.Services.AddTransient<IdentityController>();
 builder.Services.AddTransient<IdentityFactory>();
 
-// Add services to the container.
+//Services
+builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-// For Entity Framework
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("HabilitarCors", policy  => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Casa")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
 
-// For Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// Adding Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -33,7 +39,6 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 
-// Adding Jwt Bearer
 .AddJwtBearer(options =>
 {
     options.SaveToken = true;
@@ -49,22 +54,21 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseCors("HabilitarCors");
+
 app.UseHttpsRedirection();
 
-// Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 

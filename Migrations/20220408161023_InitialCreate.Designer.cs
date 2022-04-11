@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularCBFBackEND.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220408002704_InitialCreate")]
+    [Migration("20220408161023_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
