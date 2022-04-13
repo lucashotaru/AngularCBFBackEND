@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularCBFBackEND.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220408161023_InitialCreate")]
+    [Migration("20220413185409_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,39 @@ namespace AngularCBFBackEND.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AngularCBFBackEND.conteudo.Tabelas.Models.JogosModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DataHoraJogo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NomeTimeCasa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeTimeVisitante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlacarTimeCasa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlacarTimeVisitante")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rodada")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("jogos");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

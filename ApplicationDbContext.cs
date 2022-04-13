@@ -1,5 +1,5 @@
 
-using Microsoft.AspNetCore.Identity;
+using AngularCBFBackEND.conteudo.Tabelas.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,5 +15,7 @@ namespace AngularCBFBackEND
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<JogosModel> jogos {get; set;}
     }
 }

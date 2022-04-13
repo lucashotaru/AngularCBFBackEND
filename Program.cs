@@ -1,4 +1,6 @@
 using AngularCBFBackEND;
+using AngularCBFBackEND.conteudo.PainelAdmin.Factory;
+using AngularCBFBackEND.conteudo.PainelAdmin.Repositories;
 using AngularCBFBackEND.Identity.Controller;
 using AngularCBFBackEND.Identity.Factory;
 using AngularCBFBackEND.Identity.Repositories;
@@ -14,6 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IdentityRepository>();
 builder.Services.AddTransient<IdentityController>();
 builder.Services.AddTransient<IdentityFactory>();
+builder.Services.AddTransient<WebScrapingJogosRepository>();
+builder.Services.AddTransient<LeitorExcelCBFRepository>();
+builder.Services.AddTransient<LeitorExcelCBFFactory>();
 
 //Services
 builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

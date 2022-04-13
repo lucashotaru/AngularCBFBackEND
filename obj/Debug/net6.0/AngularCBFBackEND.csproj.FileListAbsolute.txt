@@ -242,3 +242,10 @@ C:\ProjetoCBF\AngularCBFBackEND\obj\Debug\net6.0\refint\AngularCBFBackEND.dll
 C:\ProjetoCBF\AngularCBFBackEND\obj\Debug\net6.0\AngularCBFBackEND.pdb
 C:\ProjetoCBF\AngularCBFBackEND\obj\Debug\net6.0\AngularCBFBackEND.genruntimeconfig.cache
 C:\ProjetoCBF\AngularCBFBackEND\obj\Debug\net6.0\ref\AngularCBFBackEND.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\CsvHelper.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\EPPlus.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\EPPlus.Interfaces.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\EPPlus.System.Drawing.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\ProjetoCBF\AngularCBFBackEND\bin\Debug\net6.0\Dapper.dll

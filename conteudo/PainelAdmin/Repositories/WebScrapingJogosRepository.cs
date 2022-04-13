@@ -105,12 +105,13 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             return Lista;
         }
 
-        public static async Task<IActionResult> SaveCBFInfo(List<CBFWebScrapingModel> lista)
+        public static async Task<string> SaveCBFInfo(List<JogosModel> lista)
         {
             string folderName = "results";
             string fileName = "cbfInfo.xlsx";
             var filePath = $"{folderName}\\{fileName}";
-
+  
+  
             if(File.Exists(filePath) is false)
             {
                 Directory.CreateDirectory(folderName);
@@ -122,7 +123,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             ws.Cell(1, 1).InsertData(lista);
             wb.SaveAs(filePath);
 
-             return filePath
+            return filePath;
         }
     }
 }
