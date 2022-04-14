@@ -1,10 +1,18 @@
+using System.Collections.Generic;
 using AngularCBFBackEND.conteudo.PainelAdmin.Models;
 using OfficeOpenXml;
 
 namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
 {
+
     public class LeitorExcelCBFRepository
     {
+        public static ApplicationDbContext _context;
+        
+        public LeitorExcelCBFRepository(ApplicationDbContext contexto)
+        {
+            _context = contexto;
+        }   
         public static async Task<List<JogosModel>> LeitorExcel(Stream stream)
         {
             var resultado = new List<JogosModel>();
@@ -27,6 +35,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                     jogo.PlacarTimeVisitante = Convert.ToInt32(excelWorksheet.Cells[row, 4].Value);
                     jogo.Rodada = Convert.ToInt32(excelWorksheet.Cells[row, 5].Value);
                     jogo.DataHoraJogo = Convert.ToDateTime(excelWorksheet.Cells[row, 6].Value);
+                    jogo.Serie = excelWorksheet.Cells[row, 7].Value.ToString();
 
                     resultado.Add(jogo);
                 }
@@ -47,10 +56,20 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             }
         }
 
-        public static async Task<bool> SalvaJogosBanco(List<JogosModel> JogosModels)
+        public static async Task<bool> SalvaJogosBanco(List<JogosModel> jogosModels)
         {
-            return false;
+            try
+            {   
+                _context.jogos.AddRange(jogosModels);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
         }
+
 
     }
 }

@@ -17,19 +17,13 @@ namespace AngularCBFBackEND.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-preview.2.22153.1")
+                .HasAnnotation("ProductVersion", "7.0.0-preview.3.22175.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AngularCBFBackEND.conteudo.Tabelas.Models.JogosModel", b =>
+            modelBuilder.Entity("AngularCBFBackEND.conteudo.PainelAdmin.Models.JogosModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataHoraJogo")
                         .HasColumnType("datetime2");
 
@@ -50,7 +44,8 @@ namespace AngularCBFBackEND.Migrations
                     b.Property<int>("Rodada")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Serie")
+                        .HasColumnType("nvarchar(max)");
 
                     b.ToTable("jogos");
                 });

@@ -48,21 +48,21 @@ namespace AngularCBFBackEND.Identity.Controller
         {
             var usuarioExistente = await IdentityFactory.VerificaSeUsuarioJaExiste(model);
             if (usuarioExistente != false)
-                return StatusCode(StatusCodes.Status500InternalServerError, new IdentityRetorno { Status = "Erro", Message = "Usuario já existe!" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new RetornoAPI { Status = "Erro", Message = "Usuario já existe!" });
             
             try
             {
                 var resultado = await IdentityFactory.CriarNovoUsuario(model);
 
                 if(!resultado)
-                    return StatusCode(StatusCodes.Status500InternalServerError, new IdentityRetorno { Status = "Erro", Message = "Falha ao tentar criar o usuario, por favor verifique se as informações estão corretas." });
+                    return StatusCode(StatusCodes.Status500InternalServerError, new RetornoAPI { Status = "Erro", Message = "Falha ao tentar criar o usuario, por favor verifique se as informações estão corretas." });
             }
             catch (System.Exception)
             {
                 throw;
             }
 
-            return Ok(new IdentityRetorno { Status = "Sucesso", Message = "Usuario criado com sucesso!" });
+            return Ok(new RetornoAPI { Status = "Sucesso", Message = "Usuario criado com sucesso!" });
         }  
     }
 }

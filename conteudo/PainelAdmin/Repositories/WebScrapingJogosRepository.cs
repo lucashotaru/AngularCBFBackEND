@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using AngularCBFBackEND.conteudo.PainelAdmin.Models;
 using ClosedXML.Excel;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 
 namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
 {
@@ -14,7 +16,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             DateTime dataAgora = DateTime.Now;
             int dataConvertida = dataAgora.Year;
 
-            for (int y = 2012; y < dataConvertida; y++)
+            for (int y = 2012; y < 2014; y++)
             {
                 try
                 {
@@ -105,25 +107,5 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             return Lista;
         }
 
-        public static async Task<bool> SaveCBFInfo(List<JogosModel> lista)
-        {
-            string folderName = "results";
-            string fileName = "cbfInfo.xlsx";
-            var filePath = $"{folderName}\\{fileName}";
-  
-  
-            if(File.Exists(filePath) is false)
-            {
-                Directory.CreateDirectory(folderName);
-                File.Create(filePath).Dispose();
-            }
-            
-            var wb = new XLWorkbook();
-            var ws = wb.Worksheets.Add("Data_Test_Worksheet");
-            ws.Cell(1, 1).InsertData(lista);
-            wb.SaveAs(filePath);
-
-            return true;
-        }
     }
 }

@@ -9,10 +9,10 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
     public class TabelasController: ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public TabelasController(ApplicationDbContext cardsDbContext)
+        
+        public TabelasController(ApplicationDbContext contexto)
         {
-            _context = cardsDbContext;
+            _context = contexto;
         }
         
 
