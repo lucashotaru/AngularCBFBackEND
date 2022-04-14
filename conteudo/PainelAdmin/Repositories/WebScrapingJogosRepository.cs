@@ -105,7 +105,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             return Lista;
         }
 
-        public static async Task<string> SaveCBFInfo(List<JogosModel> lista)
+        public static async Task<bool> SaveCBFInfo(List<JogosModel> lista)
         {
             string folderName = "results";
             string fileName = "cbfInfo.xlsx";
@@ -123,7 +123,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             ws.Cell(1, 1).InsertData(lista);
             wb.SaveAs(filePath);
 
-            return filePath;
+            return true;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace AngularCBFBackEND.Identity.Controller
             {
                 return Ok(
                     new{
-                        resultado = new JwtSecurityTokenHandler().WriteToken(resultado),
+                        token = new JwtSecurityTokenHandler().WriteToken(resultado),
                         expiration = resultado.ValidTo
                     }
                 );    

@@ -10,7 +10,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
     public class PainelAdminController: ControllerBase
     {
         [HttpGet("criar-excel-jogos-cbf/{tipo}/{serie}")]
-        public async Task<ActionResult> GetExcelCBF(string tipo, string serie)
+        public async Task<bool> GetExcelCBF(string tipo, string serie)
         {
             var filePath = await LeitorExcelCBFFactory.GetExcelCBF(tipo, serie);
 
