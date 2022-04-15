@@ -17,6 +17,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             using (ExcelPackage package = new ExcelPackage(stream))
             {
                 ExcelWorksheet excelWorksheet = package.Workbook.Worksheets[0];
+                
                 int colCount = excelWorksheet.Dimension.End.Column;
 
                 int rowCount = excelWorksheet.Dimension.End.Row;
@@ -31,6 +32,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                     jogo.Rodada = Convert.ToInt32(excelWorksheet.Cells[row, 5].Value);
                     jogo.DataHoraJogo = Convert.ToDateTime(excelWorksheet.Cells[row, 6].Value);
                     jogo.Serie = excelWorksheet.Cells[row, 7].Value.ToString();
+                    jogo.AnoTabela = Convert.ToInt32(excelWorksheet.Cells[row, 8].Value);
 
                     resultado.Add(jogo);
                 }

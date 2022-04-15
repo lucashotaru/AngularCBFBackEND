@@ -27,12 +27,17 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
 
             try
             {
-                var result = await _context.jogos
-                                .Where(x => x.DataHoraJogo.Year == ano && x.Serie == serie)
+                var tabelaTimeCasa = await _context.jogos
+                                .Where(x => x.AnoTabela == ano && x.Serie == serie)
                                 .Select(s => new { s.NomeTimeCasa, s.PlacarTimeCasa, s.PlacarTimeVisitante })
                                 .ToListAsync();
 
-                foreach (var i in result)
+                var tabelaTimeVisitante = await _context.jogos
+                                .Where(x => x.AnoTabela == ano && x.Serie == serie)
+                                .Select(s => new { s.NomeTimeVisitante, s.PlacarTimeVisitante, s.PlacarTimeCasa })
+                                .ToListAsync();
+
+                foreach (var i in tabelaTimeCasa)
                 {
                     int vitoria = 0, derrota = 0, empate = 0, pontos = 0;
                     nome = i.NomeTimeCasa;
@@ -42,6 +47,27 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
                         pontos = 3;
                     }
                     else if (i.PlacarTimeCasa < i.PlacarTimeVisitante)
+                    {
+                        derrota = 1;
+                    }
+                    else
+                    {
+                        empate = 1;
+                        pontos += 1;
+                    }
+                    ListaComparacao.Add(new TabelasPrincipalModel(nome, vitoria, derrota, empate, pontos));
+                }
+
+                foreach (var v in tabelaTimeVisitante)
+                {
+                    int vitoria = 0, derrota = 0, empate = 0, pontos = 0;
+                    nome = v.NomeTimeVisitante;
+                    if (v.PlacarTimeVisitante > v.PlacarTimeCasa)
+                    {
+                        vitoria = 1;
+                        pontos = 3;
+                    }
+                    else if (v.PlacarTimeVisitante < v.PlacarTimeCasa)
                     {
                         derrota = 1;
                     }
@@ -76,7 +102,6 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

@@ -34,11 +34,11 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
 
             bool resultado = true;
 
-            var serieRemover = times.Select(p => p.Serie).FirstOrDefault();
+            var serieARemover = times.Select(p => p.Serie).FirstOrDefault();
 
             try
             {  
-                _context.RemoveRange(_context.jogos.Where(rem => rem.Serie == serieRemover));
+                _context.RemoveRange(_context.jogos.Where(rem => rem.Serie == serieARemover));
 
                 _context.jogos.AddRange(times);
 

@@ -79,7 +79,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                                                         Convert.ToInt32(PlacarVisitante[i]),
                                                         Rodada[i],
                                                         data,
-                                                        serie);
+                                                        serie,
+                                                        y);
                             try
                             {
 
@@ -120,17 +121,19 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                     worksheet.Cell(linha, 5).Value = "Rodada";
                     worksheet.Cell(linha, 6).Value = "DataHoraJogo";
                     worksheet.Cell(linha, 7).Value = "Serie";
+                    worksheet.Cell(linha, 7).Value = "Serie";
 
-                    foreach (var user in lista)
+                    foreach (var tabela in lista)
                         {
                             linha++;
-                            worksheet.Cell(linha, 1).Value = user.NomeTimeCasa;
-                            worksheet.Cell(linha, 2).Value = user.PlacarTimeCasa;
-                            worksheet.Cell(linha, 3).Value = user.NomeTimeVisitante;
-                            worksheet.Cell(linha, 4).Value = user.PlacarTimeVisitante;
-                            worksheet.Cell(linha, 5).Value = user.Rodada;
-                            worksheet.Cell(linha, 6).Value = user.DataHoraJogo;
-                            worksheet.Cell(linha, 7).Value = user.Serie;
+                            worksheet.Cell(linha, 1).Value = tabela.NomeTimeCasa;
+                            worksheet.Cell(linha, 2).Value = tabela.PlacarTimeCasa;
+                            worksheet.Cell(linha, 3).Value = tabela.NomeTimeVisitante;
+                            worksheet.Cell(linha, 4).Value = tabela.PlacarTimeVisitante;
+                            worksheet.Cell(linha, 5).Value = tabela.Rodada;
+                            worksheet.Cell(linha, 6).Value = tabela.DataHoraJogo;
+                            worksheet.Cell(linha, 7).Value = tabela.Serie;
+                            worksheet.Cell(linha, 8).Value = tabela.AnoTabela;
                         }
                     
                     var stream = new MemoryStream();
