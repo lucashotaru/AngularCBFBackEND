@@ -1,10 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace AngularCBFBackEND.conteudo.PainelAdmin.Models
 {
-    [Keyless]
     public class JogosModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string NomeTimeCasa { get; set; }
         public int PlacarTimeCasa { get; set; }
         public string NomeTimeVisitante { get; set; }

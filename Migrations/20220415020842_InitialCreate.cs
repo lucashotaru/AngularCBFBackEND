@@ -54,6 +54,8 @@ namespace AngularCBFBackEND.Migrations
                 name: "jogos",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     NomeTimeCasa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PlacarTimeCasa = table.Column<int>(type: "int", nullable: false),
                     NomeTimeVisitante = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -64,6 +66,7 @@ namespace AngularCBFBackEND.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_jogos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

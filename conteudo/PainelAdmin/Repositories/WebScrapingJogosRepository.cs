@@ -1,9 +1,7 @@
-using System.Collections.Generic;
+using System.Globalization;
 using AngularCBFBackEND.conteudo.PainelAdmin.Models;
 using ClosedXML.Excel;
 using HtmlAgilityPack;
-using Microsoft.AspNetCore.Mvc;
-using OfficeOpenXml;
 
 namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
 {
@@ -16,14 +14,13 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             DateTime dataAgora = DateTime.Now;
             int dataConvertida = dataAgora.Year;
 
-            for (int y = 2012; y < 2014; y++)
+            for (int y = 2012; y < dataConvertida; y++)
             {
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://www.cbf.com.br/futebol-brasileiro/competicoes/{tipo}-{serie}/{y}");
+
                 try
                 {
-                    HtmlWeb web = new HtmlWeb();
-                    HtmlDocument doc = web.Load($"https://www.cbf.com.br/futebol-brasileiro/competicoes/{tipo}-{serie}/{y}");
-
-
                     var cbfNomeTimeCasaNode = doc.DocumentNode.SelectNodes("//div[@class='time pull-left']/img");
                     var cbfNomeTimeVisitanteNode = doc.DocumentNode.SelectNodes("//div[@class='time pull-right']/img");
                     var DataHoraNode = doc.DocumentNode.SelectNodes("//span[@class='partida-desc text-1 color-lightgray p-b-15 block uppercase text-center']");
@@ -74,25 +71,25 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                         }
                         Rodada[i] = rr;
 
-                        var result = new JogosModel(cbfNomeTimeCasa[i],
-                                                    Convert.ToInt32(PlacarCasa[i]),
-                                                    cbfNomeTimeVisitante[i],
-                                                    Convert.ToInt32(PlacarVisitante[i]),
-                                                    Rodada[i],
-                                                    Convert.ToDateTime(Data[i]),
-                                                    serie);
+                        DateTime data = DateTime.ParseExact(Data[i], "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                        
+                            var result = new JogosModel(cbfNomeTimeCasa[i],
+                                                        Convert.ToInt32(PlacarCasa[i]),
+                                                        cbfNomeTimeVisitante[i],
+                                                        Convert.ToInt32(PlacarVisitante[i]),
+                                                        Rodada[i],
+                                                        data,
+                                                        serie);
+                            try
+                            {
 
-                        try
-                        {
+                                Lista.Add(result);
+                            }
+                            catch (Exception ex)
+                            {
 
-                            Lista.Add(result);
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine(ex);
-                        }
-
+                                Console.WriteLine(ex);
+                            }
 
                         i++;
                     }
@@ -107,5 +104,43 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
             return Lista;
         }
 
+        public static async Task<Byte[]> ConverterListarCBFEmExcel(List<JogosModel> lista)
+        {
+            
+            return await Task.Run(async ()=>{
+
+                    var workbook = new XLWorkbook();
+                    var worksheet = workbook.Worksheets.Add("TabelaJogos");
+                    var linha = 1;
+                    
+                    worksheet.Cell(linha, 1).Value = "NomeTimeCasa";
+                    worksheet.Cell(linha, 2).Value = "PlacarTimeCasa";
+                    worksheet.Cell(linha, 3).Value = "NomeTimeVisitante";
+                    worksheet.Cell(linha, 4).Value = "PlacarTimeVisitante";
+                    worksheet.Cell(linha, 5).Value = "Rodada";
+                    worksheet.Cell(linha, 6).Value = "DataHoraJogo";
+                    worksheet.Cell(linha, 7).Value = "Serie";
+
+                    foreach (var user in lista)
+                        {
+                            linha++;
+                            worksheet.Cell(linha, 1).Value = user.NomeTimeCasa;
+                            worksheet.Cell(linha, 2).Value = user.PlacarTimeCasa;
+                            worksheet.Cell(linha, 3).Value = user.NomeTimeVisitante;
+                            worksheet.Cell(linha, 4).Value = user.PlacarTimeVisitante;
+                            worksheet.Cell(linha, 5).Value = user.Rodada;
+                            worksheet.Cell(linha, 6).Value = user.DataHoraJogo;
+                            worksheet.Cell(linha, 7).Value = user.Serie;
+                        }
+                    
+                    var stream = new MemoryStream();
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    return content;
+                    }
+                );
+            
+        }
     }
 }

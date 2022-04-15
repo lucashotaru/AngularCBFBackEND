@@ -18,7 +18,7 @@ builder.Services.AddTransient<IdentityController>();
 builder.Services.AddTransient<IdentityFactory>();
 builder.Services.AddTransient<WebScrapingJogosRepository>();
 builder.Services.AddTransient<LeitorExcelCBFRepository>();
-builder.Services.AddTransient<LeitorExcelCBFFactory>();
+builder.Services.AddTransient<PainelAdminFactory>();
 
 //Services
 builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Casa")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()

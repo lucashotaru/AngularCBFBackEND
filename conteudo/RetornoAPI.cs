@@ -1,4 +1,4 @@
-namespace AngularCBFBackEND.Identity
+namespace AngularCBFBackEND
 {
     public class RetornoAPI
     {

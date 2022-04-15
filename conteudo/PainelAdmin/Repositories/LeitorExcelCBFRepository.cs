@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AngularCBFBackEND.conteudo.PainelAdmin.Controller;
 using AngularCBFBackEND.conteudo.PainelAdmin.Models;
 using OfficeOpenXml;
 
@@ -7,12 +8,6 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
 
     public class LeitorExcelCBFRepository
     {
-        public static ApplicationDbContext _context;
-        
-        public LeitorExcelCBFRepository(ApplicationDbContext contexto)
-        {
-            _context = contexto;
-        }   
         public static async Task<List<JogosModel>> LeitorExcel(Stream stream)
         {
             var resultado = new List<JogosModel>();
@@ -55,21 +50,5 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                 return new MemoryStream(byteArray);
             }
         }
-
-        public static async Task<bool> SalvaJogosBanco(List<JogosModel> jogosModels)
-        {
-            try
-            {   
-                _context.jogos.AddRange(jogosModels);
-                _context.SaveChanges();
-                return true;
-            }
-            catch (System.Exception)
-            {
-                return false;
-            }
-        }
-
-
-    }
+    } 
 }

@@ -47,7 +47,7 @@ namespace AngularCBFBackEND.Identity.Controller
         public async Task<IActionResult> Register([FromBody] IdentityRegistroModel model)
         {
             var usuarioExistente = await IdentityFactory.VerificaSeUsuarioJaExiste(model);
-            if (usuarioExistente != false)
+            if (!usuarioExistente) 
                 return StatusCode(StatusCodes.Status500InternalServerError, new RetornoAPI { Status = "Erro", Message = "Usuario já existe!" });
             
             try

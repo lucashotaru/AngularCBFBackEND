@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularCBFBackEND.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220414195759_InitialCreate")]
+    [Migration("20220415020842_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,6 +27,12 @@ namespace AngularCBFBackEND.Migrations
 
             modelBuilder.Entity("AngularCBFBackEND.conteudo.PainelAdmin.Models.JogosModel", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<DateTime>("DataHoraJogo")
                         .HasColumnType("datetime2");
 
@@ -49,6 +55,8 @@ namespace AngularCBFBackEND.Migrations
 
                     b.Property<string>("Serie")
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("jogos");
                 });

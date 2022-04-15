@@ -17,8 +17,8 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
         
 
         [HttpGet]
-        [Route("tabela-principal")]
-        public async Task<IActionResult> TabelaPrincipal()
+        [Route("tabela-principal/{ano}/{serie}")]
+        public async Task<IActionResult> TabelaPrincipal(int ano, string serie)
         {
             string nome;
 
@@ -28,7 +28,7 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
             try
             {
                 var result = await _context.jogos
-                                .Where(x => x.DataHoraJogo.Year == 2021)
+                                .Where(x => x.DataHoraJogo.Year == ano && x.Serie == serie)
                                 .Select(s => new { s.NomeTimeCasa, s.PlacarTimeCasa, s.PlacarTimeVisitante })
                                 .ToListAsync();
 
