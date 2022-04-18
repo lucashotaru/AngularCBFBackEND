@@ -105,5 +105,16 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
                 throw;
             }
         }
+
+
+        [HttpGet]
+        [Route("tabela-jogos-recentes")]
+        public async Task<IActionResult> TabelaJogosRecentes()
+        {
+            List<TabelasPrincipalModel> ListaRecentes = new List<TabelasPrincipalModel>();
+
+
+            return Ok();
+        }    
     }
 }

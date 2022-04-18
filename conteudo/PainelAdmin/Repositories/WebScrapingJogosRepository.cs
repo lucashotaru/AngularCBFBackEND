@@ -77,50 +77,55 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
 
         public static async Task<string[]> ValidaFaseDaSerie(string urlfac)
         {
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(urlfac);
-
-            int valida = 0;
-
-            var validaUrlNode = doc.DocumentNode.SelectNodes("//select[@class='form-control big auto-select']/option");
-
-            if(validaUrlNode == null)
+            return await Task.Run(() =>
             {
-                string[] url = new string[1];
-                url[0] = urlfac;
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load(urlfac);
 
-                return url;
-            }
-            else
-            {
-                string[] url = new string[validaUrlNode.Count];
+                int valida = 0;
 
-                foreach (var item in validaUrlNode)
+                var validaUrlNode = doc.DocumentNode.SelectNodes("//select[@class='form-control big auto-select']/option");
+
+                if(validaUrlNode == null)
                 {
-                    url[valida] = validaUrlNode[valida].GetAttributeValue("value", string.Empty).ToString();
-                    valida++;
+                    string[] url = new string[1];
+                    url[0] = urlfac;
+
+                    return url;
                 }
+                else
+                {
+                    string[] url = new string[validaUrlNode.Count];
 
-                return url;
-            }
+                    foreach (var item in validaUrlNode)
+                    {
+                        url[valida] = validaUrlNode[valida].GetAttributeValue("value", string.Empty).ToString();
+                        valida++;
+                    }
 
+                    return url;
+                }
+            });
         }
 
-        public static int[] verificaData(string tipo, string serie)
+        public static async Task<int[]> verificaData(string tipo, string serie)
         {
-            int[] dataConvertida = new int[2];
+            return await Task.Run(() =>
+            {
+                int[] dataConvertida = new int[2];
 
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load($"https://www.cbf.com.br/futebol-brasileiro/competicoes/{tipo}-{serie}");
-            
-            var dataConvertidaNode = doc.DocumentNode.SelectNodes("//select[@class='form-control auto-select']/option");
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://www.cbf.com.br/futebol-brasileiro/competicoes/{tipo}-{serie}");
+                
+                var dataConvertidaNode = doc.DocumentNode.SelectNodes("//select[@class='form-control auto-select']/option");
 
-            int cont = dataConvertidaNode.Count;
+                int cont = dataConvertidaNode.Count;
 
-            dataConvertida[1] = Convert.ToInt32(dataConvertidaNode[0].InnerHtml);
-            dataConvertida[0] = Convert.ToInt32(dataConvertidaNode[cont - 1].InnerHtml);
-
-            return dataConvertida;
+                dataConvertida[1] = Convert.ToInt32(dataConvertidaNode[0].InnerHtml);
+                dataConvertida[0] = Convert.ToInt32(dataConvertidaNode[cont - 1].InnerHtml);
+                
+                return dataConvertida;
+            });
         }
     }
 }

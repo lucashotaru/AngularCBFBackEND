@@ -11,7 +11,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Factory
             List<JogosModel> Lista = new List<JogosModel>();
 
             int[] dataConvertida = new int[2];
-            dataConvertida = WebScrapingJogosRepository.verificaData(tipo, serie);
+            dataConvertida = await WebScrapingJogosRepository.verificaData(tipo, serie);
 
             bool continuar = true;
 
