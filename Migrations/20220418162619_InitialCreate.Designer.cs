@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularCBFBackEND.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220415170605_AddJogosModelAnoTabela")]
-    partial class AddJogosModelAnoTabela
+    [Migration("20220418162619_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

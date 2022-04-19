@@ -1,6 +1,8 @@
 using AngularCBFBackEND.conteudo.Tabelas.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AngularCBFBackEND.conteudo.PainelAdmin.Models;
+
 
 namespace AngularCBFBackEND.conteudo.Tabelas.Controller
 {
@@ -111,10 +113,29 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Controller
         [Route("tabela-jogos-recentes")]
         public async Task<IActionResult> TabelaJogosRecentes()
         {
-            List<TabelasPrincipalModel> ListaRecentes = new List<TabelasPrincipalModel>();
+            List<TabelaRecentesModel> ListaRecentes = new List<TabelaRecentesModel>();
 
+            try
+            {
+                var TabelaJogosRecentes = await _context.jogos
+                                .Select(s => new { s.NomeTimeCasa,s.NomeTimeVisitante, s.PlacarTimeCasa, s.PlacarTimeVisitante, s.DataHoraJogo })
+                                .OrderByDescending(d => d.DataHoraJogo).Take(3)
+                                .ToListAsync();
 
-            return Ok();
+                foreach (var item in TabelaJogosRecentes)
+                {
+                    ListaRecentes.Add(new TabelaRecentesModel(item.NomeTimeCasa, item.PlacarTimeCasa, item.NomeTimeVisitante, item.PlacarTimeVisitante));
+                }
+
+                return Ok(ListaRecentes);
+
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+
         }    
     }
 }

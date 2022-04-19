@@ -62,7 +62,8 @@ namespace AngularCBFBackEND.Migrations
                     PlacarTimeVisitante = table.Column<int>(type: "int", nullable: false),
                     Rodada = table.Column<int>(type: "int", nullable: false),
                     DataHoraJogo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Serie = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Serie = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AnoTabela = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

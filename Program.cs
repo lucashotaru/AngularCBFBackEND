@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Casa")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()

@@ -33,17 +33,17 @@ namespace AngularCBFBackEND.Identity.Factory
             if(model.Funcao == 1){
                 if (!await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
                 await IdentityController._gerenciarPapeis.CreateAsync(new IdentityRole(IdentityPapeisModel.Admin));
-            if (!await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.User))
-                await IdentityController._gerenciarPapeis.CreateAsync(new IdentityRole(IdentityPapeisModel.User));
+                if (!await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.User))
+                    await IdentityController._gerenciarPapeis.CreateAsync(new IdentityRole(IdentityPapeisModel.User));
 
-            if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
-            {
-                await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.Admin);
-            }
-            if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
-            {
-                await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.User);
-            }
+                if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
+                {
+                    await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.Admin);
+                }
+                if (await IdentityController._gerenciarPapeis.RoleExistsAsync(IdentityPapeisModel.Admin))
+                {
+                    await IdentityController._gerenciarUsuario.AddToRoleAsync(usuario, IdentityPapeisModel.User);
+                }
             }
 
             return resultado.Succeeded;
