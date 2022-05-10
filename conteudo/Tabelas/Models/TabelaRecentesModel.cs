@@ -2,17 +2,17 @@ namespace AngularCBFBackEND.conteudo.Tabelas.Models
 {
     public class TabelaRecentesModel
     {
-        public TabelaRecentesModel(string nomeTimeCasa, int placarTimeCasa, string nomeTimeVisitante, int placarTimeVisitante)
+        public TabelaRecentesModel(string siglaTimeCasa, int placarTimeCasa, string siglaTimeVisitante, int placarTimeVisitante)
         {
-            NomeTimeCasa = nomeTimeCasa;
+            SiglaTimeCasa = siglaTimeCasa;
             PlacarTimeCasa = placarTimeCasa;
-            NomeTimeVisitante = nomeTimeVisitante;
+            SiglaTimeVisitante = siglaTimeVisitante;
             PlacarTimeVisitante = placarTimeVisitante;
         }
 
-        public string NomeTimeCasa { get; set; }
+        public string SiglaTimeCasa { get; set; }
         public int PlacarTimeCasa { get; set; }
-        public string NomeTimeVisitante { get; set; }
+        public string SiglaTimeVisitante { get; set; }
         public int PlacarTimeVisitante { get; set; }
     }
 }

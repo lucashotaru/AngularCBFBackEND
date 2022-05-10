@@ -26,6 +26,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                 worksheet.Cell(linha, 6).Value = "DataHoraJogo";
                 worksheet.Cell(linha, 7).Value = "Serie";
                 worksheet.Cell(linha, 8).Value = "AnoTabela";
+                worksheet.Cell(linha, 9).Value = "SiglaTimeCasa";
+                worksheet.Cell(linha, 10).Value = "SiglaTimeVisitante";
 
                 foreach (var tabela in lista)
                 {
@@ -38,6 +40,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                     worksheet.Cell(linha, 6).Value = tabela.DataHoraJogo;
                     worksheet.Cell(linha, 7).Value = tabela.Serie;
                     worksheet.Cell(linha, 8).Value = tabela.AnoTabela;
+                    worksheet.Cell(linha, 9).Value = tabela.SiglaTimeCasa;
+                    worksheet.Cell(linha, 10).Value = tabela.SiglaTimeVisitante;
                 }
 
                 var stream = new MemoryStream();

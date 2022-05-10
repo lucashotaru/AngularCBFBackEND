@@ -48,12 +48,16 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Factory
                         var DataHoraNode = doc.DocumentNode.SelectNodes("//span[@class='partida-desc text-1 color-lightgray p-b-15 block uppercase text-center']");
                         var PlacarNode = doc.DocumentNode.SelectNodes("//div[@class='clearfix']/a/strong[@class='partida-horario center-block']");
                         var RodadaNove = doc.DocumentNode.SelectNodes("//h3[@class='text-center']");
+                        var siglaTimeCasaNode = doc.DocumentNode.SelectNodes("//div[@class='time pull-left']/span");
+                        var siglaTimeVisitanteNode = doc.DocumentNode.SelectNodes("//div[@class='time pull-right']/span");
 
                         string[] cbfNomeTimeCasa = new string[cbfNomeTimeCasaNode.Count];
                         string[] cbfNomeTimeVisitante = new string[cbfNomeTimeVisitanteNode.Count];
                         string[] Placar = new string[PlacarNode.Count];
                         int[] Rodada = new int[cbfNomeTimeCasaNode.Count];
                         string[] Data = new string[DataHoraNode.Count];
+                        string[] siglaTimeCasa = new string[siglaTimeCasaNode.Count];
+                        string[] siglaTimeVisitante = new string[siglaTimeVisitanteNode.Count];
 
                         foreach (var item in cbfNomeTimeCasaNode)
                         {
@@ -61,6 +65,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Factory
                             cbfNomeTimeVisitante[idVar] = cbfNomeTimeVisitanteNode[idVar].GetAttributeValue("title", string.Empty).ToString();
                             Placar[idVar] = PlacarNode[idVar].InnerText.ToString().Trim();
                             Data[idVar] = DataHoraNode[idVar].InnerText.ToString().Trim().Remove(0, 5);
+                            siglaTimeCasa[idVar] = siglaTimeCasaNode[idVar].InnerText;
+                            siglaTimeVisitante[idVar] = siglaTimeVisitanteNode[idVar].InnerText;
 
                             int[] placarConvertido = new int[2];
 
@@ -77,7 +83,10 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Factory
                                                         Rodada[idVar],
                                                         DataConvertida,
                                                         serie,
-                                                        ano);
+                                                        ano,
+                                                        siglaTimeCasa[idVar],
+                                                        siglaTimeVisitante[idVar]
+                                                        );
                                                         
                             Lista.Add(result);
                             

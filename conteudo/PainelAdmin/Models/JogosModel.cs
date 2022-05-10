@@ -17,11 +17,13 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Models
         public DateTime DataHoraJogo { get; set; }
         public string? Serie {get; set;}
         public int? AnoTabela { get; set; }
+        public string SiglaTimeCasa { get; set; }
+        public string SiglaTimeVisitante { get; set; }
         
         
 
 
-        public JogosModel(string TimeCasa,int PlacarCasa, string TimeVisitante, int PlacaVisitante, int rodada, DateTime dataHora, string serie, int anoTabela)
+        public JogosModel(string TimeCasa,int PlacarCasa, string TimeVisitante, int PlacaVisitante, int rodada, DateTime dataHora, string serie, int anoTabela, string siglaTimeCasa, string siglaTimeVisitante)
         {
             NomeTimeCasa= TimeCasa;
             PlacarTimeCasa = PlacarCasa;
@@ -31,6 +33,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Models
             DataHoraJogo = dataHora;
             Serie = serie;
             AnoTabela = anoTabela;
+            SiglaTimeCasa = siglaTimeCasa;
+            SiglaTimeVisitante = siglaTimeVisitante;
         }
 
         public JogosModel()

@@ -33,6 +33,8 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Repositories
                     jogo.DataHoraJogo = Convert.ToDateTime(excelWorksheet.Cells[row, 6].Value);
                     jogo.Serie = excelWorksheet.Cells[row, 7].Value.ToString();
                     jogo.AnoTabela = Convert.ToInt32(excelWorksheet.Cells[row, 8].Value);
+                    jogo.SiglaTimeCasa = excelWorksheet.Cells[row, 9].Value.ToString();;
+                    jogo.SiglaTimeVisitante = excelWorksheet.Cells[row, 10].Value.ToString();
 
                     resultado.Add(jogo);
                 }
