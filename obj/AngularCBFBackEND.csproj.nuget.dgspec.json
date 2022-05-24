@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
+    "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
   },
   "projects": {
-    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
+    "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "projectUniqueName": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
         "projectName": "AngularCBFBackEND",
-        "projectPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
-        "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
-        "outputPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\obj\\",
+        "projectPath": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "packagesPath": "C:\\Users\\lukin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lukin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -125,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

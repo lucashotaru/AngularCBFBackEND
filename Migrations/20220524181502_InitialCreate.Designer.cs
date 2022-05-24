@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularCBFBackEND.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220418162619_InitialCreate")]
+    [Migration("20220524181502_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -57,6 +57,14 @@ namespace AngularCBFBackEND.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Serie")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SiglaTimeCasa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SiglaTimeVisitante")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

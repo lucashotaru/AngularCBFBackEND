@@ -1,4 +1,5 @@
 using AngularCBFBackEND.conteudo.PainelAdmin.Factory;
+using AngularCBFBackEND.conteudo.PainelAdmin.Models;
 using AngularCBFBackEND.conteudo.PainelAdmin.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,12 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PainelAdminController: ControllerBase
+    public class PainelAdminController : ControllerBase
     {
+
+
         private readonly ApplicationDbContext _context;
-        
+
         public PainelAdminController(ApplicationDbContext contexto)
         {
             _context = contexto;
@@ -20,16 +23,17 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
         {
             var arquivoExcel = await PainelAdminFactory.GetExcelCBF(tipo, serie);
 
-            if(arquivoExcel != null)
+            if (arquivoExcel != null)
                 return File(arquivoExcel, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"TabelasJogos/{serie}/{DateTime.Now.ToShortDateString()}.xlsx");
 
             return null;
         }
 
-        [HttpPost("importar-jogos-cbf")]
-        public async Task<IActionResult> PostExcelCBF(IFormFile cbfInfo)
+        [HttpPost]
+        [Route("upload")]
+        public async Task<IActionResult> Upload(IFormFile file)
         {
-            var result = await LeitorExcelCBFRepository.LerStreamEConverterEmMemory(cbfInfo);
+            var result = await LeitorExcelCBFRepository.LerStreamEConverterEmMemory(file);
             var times = await LeitorExcelCBFRepository.LeitorExcel(result);
 
             bool resultado = true;
@@ -37,7 +41,7 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
             var serieARemover = times.Select(p => p.Serie).FirstOrDefault();
 
             try
-            {  
+            {
                 _context.RemoveRange(_context.jogos.Where(rem => rem.Serie == serieARemover));
 
                 _context.jogos.AddRange(times);
@@ -51,10 +55,17 @@ namespace AngularCBFBackEND.conteudo.PainelAdmin.Controller
                 resultado = false;
             }
 
-            if(resultado != false)
-                return StatusCode(StatusCodes.Status201Created, new RetornoAPI { Status = "Sucesso", Message = "Excell upado com sucesso" });               
+            if (resultado != false)
+                return StatusCode(StatusCodes.Status201Created, new RetornoAPI { Status = "Sucesso", Message = "Excell upado com sucesso" });
 
             return StatusCode(StatusCodes.Status409Conflict, new RetornoAPI { Status = "Erro", Message = "Não foi possivel upar o excel" });
+        }
+
+        [HttpGet]
+        [Route("download")]
+        public async Task<IActionResult> Download()
+        {
+            return  Ok();
         }
     }
 }

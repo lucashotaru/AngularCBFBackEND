@@ -26,7 +26,7 @@ builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("HabilitarCors", policy  => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    options.AddPolicy("HabilitarCors", policy  => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("Content-Disposition"));
 });
 
 
