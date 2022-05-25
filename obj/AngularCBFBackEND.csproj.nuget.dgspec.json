@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
+    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
+    "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "projectUniqueName": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
         "projectName": "AngularCBFBackEND",
-        "projectPath": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
-        "packagesPath": "C:\\Users\\lukin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lukin\\Projetos\\AngularCBFBackEND\\obj\\",
+        "projectPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\AngularCBFBackEND.csproj",
+        "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
+        "outputPath": "C:\\ProjetoCBF\\AngularCBFBackEND\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lukin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "ClosedXML": {
               "target": "Package",
               "version": "[0.95.4, )"
@@ -82,6 +92,10 @@
               "target": "Package",
               "version": "[7.0.0-preview.3.22175.1, )"
             },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.3, )"
@@ -91,6 +105,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0-preview.2.22153.1, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.13, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -119,7 +137,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

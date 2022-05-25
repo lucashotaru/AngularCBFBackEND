@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AngularCBFBackEND.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class ImplementacaoEstatisticas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -70,6 +70,19 @@ namespace AngularCBFBackEND.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_jogos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Temporadas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ano = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Temporadas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,6 +191,30 @@ namespace AngularCBFBackEND.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Times",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ataque = table.Column<int>(type: "int", nullable: false),
+                    MeioCampo = table.Column<int>(type: "int", nullable: false),
+                    Defesa = table.Column<int>(type: "int", nullable: false),
+                    TemporadaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Times", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Times_Temporadas_TemporadaId",
+                        column: x => x.TemporadaId,
+                        principalTable: "Temporadas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -216,6 +253,11 @@ namespace AngularCBFBackEND.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Times_TemporadaId",
+                table: "Times",
+                column: "TemporadaId");
         }
 
         /// <inheritdoc />
@@ -240,10 +282,16 @@ namespace AngularCBFBackEND.Migrations
                 name: "jogos");
 
             migrationBuilder.DropTable(
+                name: "Times");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Temporadas");
         }
     }
 }

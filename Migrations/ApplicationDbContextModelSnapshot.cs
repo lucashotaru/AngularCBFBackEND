@@ -69,6 +69,59 @@ namespace AngularCBFBackEND.Migrations
                     b.ToTable("jogos");
                 });
 
+            modelBuilder.Entity("AngularCBFBackEND.Models.Temporada", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Ano")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Temporadas");
+                });
+
+            modelBuilder.Entity("AngularCBFBackEND.Models.Time", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Ataque")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Defesa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MeioCampo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TemporadaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TemporadaId");
+
+                    b.ToTable("Times");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -267,6 +320,17 @@ namespace AngularCBFBackEND.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("AngularCBFBackEND.Models.Time", b =>
+                {
+                    b.HasOne("AngularCBFBackEND.Models.Temporada", "Temporada")
+                        .WithMany("Times")
+                        .HasForeignKey("TemporadaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Temporada");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -316,6 +380,11 @@ namespace AngularCBFBackEND.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AngularCBFBackEND.Models.Temporada", b =>
+                {
+                    b.Navigation("Times");
                 });
 #pragma warning restore 612, 618
         }

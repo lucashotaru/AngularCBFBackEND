@@ -26,11 +26,11 @@ builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("HabilitarCors", policy  => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("Content-Disposition"));
+    options.AddPolicy("HabilitarCors", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("Content-Disposition"));
 });
 
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Curso")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -57,6 +57,8 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
     };
 });
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -71,6 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("HabilitarCors");
+app.UseRouting();
+
 
 app.UseHttpsRedirection();
 
